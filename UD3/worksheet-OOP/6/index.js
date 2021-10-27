@@ -15,7 +15,8 @@ let l1 = new Lambdasian({name:"Ramón", age:23, location:"Jaén"});
 console.log(l1.speak());
 
 class Instructor extends Lambdasian {
-    contructor(valores) {
+    cons
+    constructor(valores) {
         // super(parametros, valores);
         this.specialty = valores.specialty;
         this.favLanguage = valores.favLanguage;
@@ -38,7 +39,7 @@ console.log(I1.demo("Maths"));
 console.log(I1.grade(l1, "Lengua"));
 
 class Student extends Lambdasian {
-    contructor(datos) {
+    constructor(datos) {
         this.previousBackground = datos.previousBackground;
         this.className = datos.className;
         this.favSubjects = datos.favSubjects;
@@ -59,8 +60,12 @@ let student1 = new Student({name:"Miguel", age:20, location:"Zaragoza"}, {previo
 console.log(student1.listSubjects("P.E", "Maths", "TIC"));
 console.log(student1.PRAssignment(l1, "Ciencias Naturales"));
 
-class ProjetManager extends Instructor(){
-
+class ProjetManager extends Instructor{
+    constructor(objeto){
+        this.gradClassName = objeto.gradClassName;
+        this.favInstructor = objeto.favInstructor;
+    }
+    standUp()
 
 
 }
