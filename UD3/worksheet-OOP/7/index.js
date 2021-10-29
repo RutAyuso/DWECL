@@ -29,6 +29,10 @@ class Instructor extends Lambdasian {
     grade(estudiante, asignatura) { // Estudiante es un objeto de Lambdasian
         return `${estudiante.name} receives a perfect score on ${asignatura}`;
     }
+
+    incrementGrade(){
+        return Student.graduate+= Math.trunc(Math.random()*99+1);
+    }
 }
 
 let I1 = new Instructor({name:"Javier", age:20, location:"Granada"}, {specialty:"TIC", favLanguage:"JavaScript", catchPhrase:"Why are you late?"});
@@ -43,6 +47,7 @@ class Student extends Lambdasian {
         this.previousBackground = datos.previousBackground;
         this.className = datos.className;
         this.favSubjects = datos.favSubjects;
+        return `Aun no te puedes graduar`
 
     }
 
@@ -53,6 +58,15 @@ class Student extends Lambdasian {
 
     PRAssignment(student, subject) {
         return `${student.name} has submitted a PR for ${subject}`;
+    }
+
+    graduate(){
+        if (this.grade > 70){
+            return `You can gradute!!`;
+        }else{
+            Instructor.incrementGrade();
+        }
+
     }
 }
 
@@ -73,7 +87,7 @@ class ProjectManager extends Instructor{
     }
 
     debugsCode(stu, subject){
-        return `${this.name} debugs ${stu.name}'s code on ${subject}`
+        return `${this.name} debugs ${stu.name}'s code on ${subject}`;
     }
 }
 
