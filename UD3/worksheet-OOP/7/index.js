@@ -1,4 +1,4 @@
-//6
+//7
 class Lambdasian {
     constructor(parametros) {
         this.name = parametros.name;
