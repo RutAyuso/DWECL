@@ -15,12 +15,11 @@ let l1 = new Lambdasian({name:"Ramón", age:23, location:"Jaén"});
 console.log(l1.speak());
 
 class Instructor extends Lambdasian {
-    cons
-    constructor(valores) {
-        // super(parametros, valores);
+    constructor(parametros, valores) {
+        super(parametros);
         this.specialty = valores.specialty;
         this.favLanguage = valores.favLanguage;
-        this.cathPhrase = valores.cathPhrase;
+        this.cathPhrase = valores.catchPhrase;
     }
 
     demo(asignatura) {
@@ -32,14 +31,15 @@ class Instructor extends Lambdasian {
     }
 }
 
-let I1 = new Instructor({name: "Javier", age: 20, location: "Granada"}, {specialty: "TIC", favLanguage:"JavaScript", cathPhrase:"Why are you late?"});
+let I1 = new Instructor({name:"Javier", age:20, location:"Granada"}, {specialty:"TIC", favLanguage:"JavaScript", catchPhrase:"Why are you late?"});
 console.log(I1);
 console.log(I1.speak());
 console.log(I1.demo("Maths"));
 console.log(I1.grade(l1, "Lengua"));
 
 class Student extends Lambdasian {
-    constructor(datos) {
+    constructor(parametros, datos) {
+        super(parametros)
         this.previousBackground = datos.previousBackground;
         this.className = datos.className;
         this.favSubjects = datos.favSubjects;
@@ -60,12 +60,24 @@ let student1 = new Student({name:"Miguel", age:20, location:"Zaragoza"}, {previo
 console.log(student1.listSubjects("P.E", "Maths", "TIC"));
 console.log(student1.PRAssignment(l1, "Ciencias Naturales"));
 
-class ProjetManager extends Instructor{
-    constructor(objeto){
-        this.gradClassName = objeto.gradClassName;
-        this.favInstructor = objeto.favInstructor;
+class ProjectManager extends Instructor{
+    constructor(parametros, valores, object){
+        super(parametros, valores);
+        this.grandClassName = object.grandClassName;
+        this.favInstructor = object.favInstructor;
+
     }
-    standUp()
 
+    standUp(channel){
+        return `${this.name} announces to ${channel}, @channel standy times`;
+    }
 
+    debugsCode(stu, subject){
+        return `${this.name} debugs ${stu.name}'s code on ${subject}`
+    }
 }
+
+let pm1 = new ProjectManager({name:"Manuel", age:30, location:"Huelva"}, {specialty:"Math",
+favLanguage:"PHP", catchPhrase:"Hello"}, {grandClassName:"CS3", favInstructor:"Pepe"});
+console.log(pm1.standUp(7));
+console.log(pm1.debugsCode(student1, "Lengua"));
