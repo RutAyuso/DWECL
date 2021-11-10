@@ -1,0 +1,42 @@
+body {
+    font-family: sans-serif;
+    background-color: #ffffcc;
+  }
+  
+
+  #cont{
+    border-left: 8em solid blue;
+    padding-left: 2em;
+  }
+
+  #minimalista, #con_color{
+    text-decoration: none;
+    font-family: Arial;
+    color: #0D1745 ;
+    font-weight: bold;
+  }
+ 
+  #marco {
+    margin-top: 10px;
+    background-color: lightblue;
+    border: outset 2px lightblue;
+
+  }
+  #title{
+    font-family: Arial;
+    font-weight: bold;
+    color:#0D1745;
+  }
+
+  #p3 {
+    display: initial;
+  }
+  
+  #p4 {
+    font-weight: bold;
+  }
+  
+  #p5 {
+    background-color: yellow;
+    border: 2px solid black;
+  }
