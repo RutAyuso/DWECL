@@ -1,0 +1,38 @@
+#imagen{
+    width: 600px;
+    height: 500px;
+       
+}
+
+#flechaizquierda {
+    position: relative;
+    top: -120px;
+    left: 110px;
+    width: 100px;
+    height: 100px;
+}
+
+#flechaderecha {
+    position: relative;
+    top: -120px;
+    left: -110px;
+    width: 100px;
+    height: 100px;
+}
+
+#flechaderecha,#flechaizquierda{
+    opacity: 0.5;
+}
+
+#flechaderecha:hover,#flechaizquierda:hover{
+    opacity: 1;
+}
+
+#numeracion{
+    position: relative;
+    top: 50px;
+    left: 650px;
+    font-size: x-large;
+    background-color: white;
+    padding: 10px;
+}
