@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        // Load Charts and the corechart and barchart packages.
+        google.charts.load('current', {'packages':['corechart']});
+  
+        // Draw the pie chart and bar chart when Charts is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+  
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Topping');
+          data.addColumn('number', 'Slices');
+          data.addRows([
+            ['PSOE', 120],
+            ['PP', 89],
+            ['Vox', 52],
+            ['U.Podemos', 35],
+            ['Cs', 10],
+            ['ERC', 13],
+            ['JxCat', 8],
+            ['PNV', 6],
+            ['EH Bildu', 5],
+            ['Más País', 3],
+            ['Cca-PNC', 2],
+            ['NA+', 2],
+            ['CUP', 2]
+
+          ]);
+  
+          var piechart_options = {title:'Datos generales sobre el Congreso de los Diputados',
+                         width:600,
+                         height:500};
+          var piechart = new google.visualization.PieChart(document.getElementById('sectores_div'));
+          piechart.draw(data, piechart_options);
+  
+          var barchart_options = {title:'Datos generales sobre el Congreso de los Diputados',
+                         width:600,
+                         height:500,
+                         legend: 'none'};
+          var barchart = new google.visualization.BarChart(document.getElementById('barras_div'));
+          barchart.draw(data, barchart_options);
+        }
+      </script>
+      <title>Google Charts ejercicio1.1</title>
+    </head>
+  <body>
+      <!--Table and divs that hold the pie charts-->
+      <table class="columns">
+        <tr>
+          <td><div id="sectores_div" style="border: 1px solid #ccc"></div></td>
+        </tr>
+        <tr>
+          <td><div id="barras_div" style="border: 1px solid #ccc"></div></td>
+        </tr>
+      </table>
+    </body>
+  </html>
