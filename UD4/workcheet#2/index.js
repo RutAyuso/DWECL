@@ -6,6 +6,18 @@ function main() {
     document.getElementById("cont").style.maxWidth = "210px";
     //document.getElementsByTagName("legend").style.fontFamily ="Courier";
     var lista_libros = new BookList();
+
+    if(localStorage.getItem('lista_libro')){
+        lista_libros = JSON.parse(localStorage.getItem('lista_libro'));
+        for(let i = 0 ; i<lista_libros.libros.length ; i++){
+            let li_nueva = document.createElement("li");
+            let texto = lista_libros.libros[i].title + ' ' + lista_libros.libros[i].genre + ' ' + lista_libros.libros[i].author +  ' ' + lista_libros.libros[i].readDate ;
+            li_nueva.innerHTML= texto;
+            //li_nueva.addEventListener("click",borrar_li);
+            document.getElementById("lista").appendChild(li_nueva);
+        }
+    }
+
     document.getElementById("boton").addEventListener("click",(e)=>{
         e.preventDefault();
         let title = document.getElementById("title").value;
@@ -15,12 +27,14 @@ function main() {
 
         libro = new Book(title,genre,author,readDate);
         lista_libros.add(libro);
+        localStorage.setItem("lista_libro", JSON.stringify(lista_libros));
 
         let li_nueva = document.createElement("li");
         let texto = title + ' ' + genre + ' ' + author +  ' ' + readDate ;
         li_nueva.innerHTML= texto;
         //li_nueva.addEventListener("click",borrar_li);
         document.getElementById("lista").appendChild(li_nueva);
+        
     });
 
 }
@@ -28,18 +42,28 @@ var b1 = document.getElementById("boton");
 
 
 class BookList{
-    constructor(read,notReadYet,next,current,last) {
-        this.readBooks = read;
-        this.notReadYet = notReadYet;
-        this.next = next;
-        this.current = current;
-        this.last = last;
-        this.all = [];
+    constructor() {
+        this.readBooks = 0;
+        this.notReadYet = 0;
+        this.next = 0;
+        this.current = 0;
+        this.last = 0;
+        this.libros = [];
     }
 
     add(book){
-        this.all.push(book);
+        this.libros.push(book);
     }
+    
+    nuevo(lista){
+        this.readBooks = readBooks;
+        this.notReadYet = 0;
+        this.next = 0;
+        this.current = 0;
+        this.last = 0;
+        this.libros = [];
+    }
+
 
     finishCurrentBook(){
         this.notReadYet -= 1;
@@ -50,10 +74,10 @@ class BookList{
         this.last.read = true;
         var i = 0;
         if(this.notReadYet != 0){
-            while(this.all[i].read == true || this.all[i] == this.current)
+            while(this.libros[i].read == true || this.libros[i] == this.current)
                 i++;
             
-            this.next = this.all[i];
+            this.next = this.libros[i];
         }
         else
             console.log("no hay mas libros para leer");
@@ -70,16 +94,5 @@ class Book{
     }
 
 }
-/*
-libro_cero = new Book("Los juegos del hambre","Ciencia Ficción/ Aventuras","Suzanne Collins",true, new Date());
-libro_uno = new Book("Los juegos del hambre: En llamas","Ciencia Ficción/ Aventuras","Suzanne Collins",false, new Date());
-libro_dos = new Book("Los juegos del hambre: Sinsajo","Ciencia Ficción/ Aventuras","Suzanne Collins",false, new Date());
-libro_tres = new Book("Los juegos del hambre: Balada de pájaros cantores y serpientes","Ciencia Ficción/ Aventuras","Suzanne Collins",false, new Date());
 
-lista = new BookList(1,2,libro_dos,libro_uno,libro_cero);
-
-lista.add(libro_cero);
-lista.add(libro_uno);
-lista.add(libro_dos);
-lista.add(libro_tres);*/
 
