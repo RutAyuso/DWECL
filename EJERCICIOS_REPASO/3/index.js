@@ -49,16 +49,15 @@ function palindromo(palabra){
 }
 palindromo("alohola");
 
-//4
-cad = 'Hola que tal';
-x = 'a'
-
-function ponMayus(cad, x){
-    cad = cad.replaceAll(x, x.toUpperCase());
-    return cad;
+//4 --> No termina de funcionar bien las mayusculas.
+function ejercicio4(cadena,x){
+    for(let l = 0; l < cadena.length; l++){
+        if(cadena[l]===x){
+            cadena[l]=cadena[l].toUpperCase();
+        }
+    }
 }
-console.log(ponMayus(cad, x));
-
+ejercicio5("Hola","a");
 
 //5
 function ejercicio5(s){
