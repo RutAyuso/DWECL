@@ -1,6 +1,6 @@
 window.onload = ()=>{
-    divGif=document.getElementById("div");
-    divGif.addEventListener("click",cargaGif); 
+    h1=document.getElementById("h1");
+    h1.addEventListener("click",cargaGif); 
 }
 
 
