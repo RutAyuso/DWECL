@@ -1,7 +1,9 @@
  
 window.addEventListener('scroll',()=>{
   if(window.scrollY+window.innerHeight >= document.body.offsetHeight-1000){
-    loadDoc(siguientePagina);
+    if(siguientePagina != "finish"){
+      loadDoc(siguientePagina);
+    }
   }
 });
 
@@ -13,13 +15,19 @@ function loadDoc(url) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-            maquetar(JSON.parse(this.responseText));
-            siguientePagina = JSON.parse(this.responseText).nextPage;
+          const response = JSON.parse(this.responseText)
+
+          if(response != []){
+            maquetar(response);
+            siguientePagina = response.nextPage ? response.nextPage: "finish";
+          }
+          
         }
     };
     xhttp.open("GET",url, true);//DISNEY API
     xhttp.send();
   }
+  
   function inicio(){
     loadDoc("https://api.disneyapi.dev/characters");
   }
