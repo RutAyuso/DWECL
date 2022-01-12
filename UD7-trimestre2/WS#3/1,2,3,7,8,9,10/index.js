@@ -64,9 +64,6 @@ $( document ).ready(function() {
                 $('#mensaje').text("INSEGURA").css("color", "red");
             }
         })
-
-
-
     });
     
 

@@ -1,11 +1,11 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     $('#btn').click(function(){
-        $('body').hide();
+        $('ul li:first-child').hide(2000);
     })
 
     //5
-    $('ol li').eq(0).hide();
+    $('ol li').eq(0).hide(2000);
 
     //8a
     $('div p').eq(0).css('font-size', '10px');
@@ -15,7 +15,7 @@ $( document ).ready(function() {
 
     //8b
     $('h1').click(function(){
-         $(this).siblings(0).toggle(2000);
+         $(this).siblings().eq(0).toggle(2000);
 
     });
 
