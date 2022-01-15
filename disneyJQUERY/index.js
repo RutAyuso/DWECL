@@ -17,29 +17,13 @@ let lastRequestUrl;
 var siguientePagina = "";
 
 cont=0;
-$(document).ready(function(){
-  inicio;});
+$(document).ready(
+  loadDoc);
 
-function loadDoc(url) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-
-            const response = JSON.parse(this.responseText);
-            if (response.data != []){
-                maquetar(response);
-                siguientePagina = response.nextPage ? response.nextPage : "finish";
-            }
-            
-        }
-    };
-    xhttp.open("GET",url, true);//DISNEY API
-    xhttp.send();
+function loadDoc() {
+    $.get("https://api.disneyapi.dev/characters", maquetar)
   }
 
-  function inicio(){
-    loadDoc("https://api.disneyapi.dev/characters");
-  }
 
   function lista(lista){
     var li = "";
