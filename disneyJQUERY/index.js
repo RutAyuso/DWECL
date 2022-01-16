@@ -41,35 +41,33 @@ function loadDoc() {
   }
   function maquetarCard(json) {
     console.log(json);
-    var modal = $("tvesModal");
-    var span = $("close")[0];
+    var modal = $("#tvesModal");
+    var span = $(".close").eq(0);
     modal.css('display','block');
 
     $('body').css('position', 'static');
     $('body').css('height' , '100%');
-    $('body').css('overflow','hidden');
 
-    $("name").text(json.name);
-    $("peliculas").text("Films: "+lista(json.films));
-    $("peliculasCortas").text("Short films: "+lista(json.shortFilms));
-    $("series").text("shows: "+lista(json.tvShows));
-    $("videoJuegos").text("Video Games: "+lista(json.videoGames));
-    $("atracciones").text("Atractions: "+lista(json.parkAttractions));
-    $("aliados").text("Alies: "+lista(json.allies));
-    $("enemigos").text("Enemies: "+lista(json.enemies));
-    span.onclick = function() {
+    $("#name").text(json.name);
+    $("#peliculas").text("Films: "+lista(json.films));
+    $("#peliculasCortas").text("Short films: "+lista(json.shortFilms));
+    $("#series").text("shows: "+lista(json.tvShows));
+    $("#videoJuegos").text("Video Games: "+lista(json.videoGames));
+    $("#atracciones").text("Atractions: "+lista(json.parkAttractions));
+    $("#aliados").text("Alies: "+lista(json.allies));
+    $("#enemigos").text("Enemies: "+lista(json.enemies));
+    span.click(function() {
         modal.css('display','none');
 
         $('body').css('position','inherit');
         $('body').css('height','auto');
         $('body').css('overflow','visible');
-    }
+    });
   }
 function maquetar(json){
 
     for(let i=0;i<json.data.length;i++){
-        console.log(json.data[i].name);
-        var div= $("div");
+        let div= $("<div>");
         div.css('width','10rem');
         div.attr('id',cont);
         div.css('height','10rem');
@@ -78,11 +76,11 @@ function maquetar(json){
         div.css('borderRadius','10px');
         div.css('paddingBottom','2rem');
         div.css('backgroundColor','rgba(215, 189, 226)');
-        div.onclick=()=>{
+        div.click(()=>{
             maquetarCard(json.data[i]);
-        }
+        });
 
-        var img=$("img");
+        let img=$("<img>");
         img.attr('src',json.data[i].imageUrl);
         img.css('width','6rem');
         img.css('borderRadius','0px');
@@ -90,13 +88,13 @@ function maquetar(json){
         img.css('marginLeft','2rem');
         img.css('marginBottom','rem');
 
-        var nombre= $("p");
+        let nombre= $("<p>");
         nombre.css('text-align','center');
         nombre.css('color', 'white');
         nombre.css('fontSize','18px');
         nombre.text(json.data[i].name);
 
-        $("card").append(div);
+        $("#card").append(div);
         div.append(nombre);
         div.append(img);
 
