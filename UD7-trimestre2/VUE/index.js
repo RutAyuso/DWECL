@@ -7,7 +7,10 @@ const Counter = {
         nuevoNombre: "Escribe tu nombre",
         listaPersonas:[{nombre:"rut",apellido: "Ayuso Comino",edad:"18"},{nombre:"Manuel",apellido: "Ayuso Terrones",edad:"58"}],
         listaPersonas2:["eden", "Cristina"],
-        mostrar:false
+        mostrar:false,
+        nVariable: "<h1>Hola</h1>",
+        id: "32"
+        
     }
     }
     ,

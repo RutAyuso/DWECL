@@ -10,14 +10,16 @@
 </head>
 <body>
     <div id="appVue">
-        <!--Counter: {{ counter }}-->
-        Variable nuevoNombre : {{nuevoNombre}}
-        <input type="text" v-model="nuevoNombre">
+        Counter: {{ counter }}
         <br>
-        <!--<h1>{{midato}}</h1>-->
+        Variable nuevoNombre : {{nuevoNombre}}
+        <br>
+        <input type="text" v-model="nuevoNombre">
+        <br> 
+        <h1>{{midato}}</h1>
         <button v-on:click="incrementa">Incrementa contador</button>
 
-        <hr>
+         <hr>
 
         <ol>
             <li v-for="nombre in listaNombres">
@@ -36,6 +38,10 @@
             {{persona}}
             {{persona.edad}}
         </div>
+
+        <span v-html="nVariable"></span><!--para mostrar html-->
+
+        <div v-bind:id="id">Capa con id dinamico</div><!--asociamos un atributo a una variable que ya tenemos-->
         
 
         
