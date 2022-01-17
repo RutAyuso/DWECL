@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA TAREAS TODO</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+<center>
+    <div id="appVue">
+        INTRODUCE TAREA :
+        <input type="text" v-model="titulo">
+        <button id="añade" v-on:click="añade">Añade tarea</button>
+        <br>
+        <br>
+        <div id="contador">Total tareas: {{tareas.length}} <br>
+            Tareas acabadas: {{cuenta}}</div>
+
+        <ol :class="completada==false ? 'verdecito' : 'rojito'" >
+            <div id="cuadradito" v-for="t,i in tareas" >
+                <p >titulo: {{t.titulo}}</p>
+                <p>completa : {{t.completada}}</p>
+                <!-- <p v-:disabled="t.completada== true">>Completada</p> -->
+                <p>fecha: {{ new Date()}}</p>
+                <p v-if="completada">HECHO</p>
+                <button id="completar" v-on:click="completar(i)">DONE</button>
+                <button id="borrar" v-on:click="borrar(i)">DELETE</button>
+                
+                <hr>
+            </div>
+        </ol>
+
+        
+        
+
+        
+      </div>
+</center> 
+    
+</body>
+</html>
