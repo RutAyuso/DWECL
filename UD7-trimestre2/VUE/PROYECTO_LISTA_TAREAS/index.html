@@ -12,32 +12,27 @@
 <body>
 <center>
     <div id="appVue">
-        INTRODUCE TAREA :
+        TU LISTA DE TAREAS
         <input type="text" v-model="titulo">
         <button id="añade" v-on:click="añade">Añade tarea</button>
         <br>
         <br>
-        <div id="contador">Total tareas: {{tareas.length}} <br>
-            Tareas acabadas: {{cuenta}}</div>
+        <div id="contador">Total tareas: {{tareas.length}}  
+             Tareas acabadas: {{cuenta}}</div>
 
-        <ol :class="completada==false ? 'verdecito' : 'rojito'" >
+        <ol>
             <div id="cuadradito" v-for="t,i in tareas" >
-                <p >titulo: {{t.titulo}}</p>
-                <p>completa : {{t.completada}}</p>
-                <!-- <p v-:disabled="t.completada== true">>Completada</p> -->
-                <p>fecha: {{ new Date()}}</p>
+            <div id="cuadrado" v-bind:class="{verdecito: t.completada, rojito: !t.completada }">
+                <p>Descripción: {{t.titulo}}</p>
+                <p>Completa : {{t.completada}}. Fecha: {{t.fecha}}. Prioridad: {{t.prioridad}}</p>
                 <p v-if="completada">HECHO</p>
                 <button id="completar" v-on:click="completar(i)">DONE</button>
                 <button id="borrar" v-on:click="borrar(i)">DELETE</button>
-                
+                </div>
                 <hr>
             </div>
         </ol>
 
-        
-        
-
-        
       </div>
 </center> 
     

@@ -3,32 +3,44 @@ body{
     margin-top: 5%;
 }
 
-
 #appVue{
     color: rgb(0, 0, 0);
-    background-color: rgb(219, 195, 233);
-    max-width: 200px;
-    text-align:center;
-    padding: 0;
-    margin: 0;
+    background-color: rgb(255, 255, 255);
+    max-width: 300px;
+    padding: 0px;
+    margin: 0px;
+    
 }
+
 #cuadradito{
-    background-color: white;
-    margin:0px ;
-    position: relative;
+    position: inherit;
+    align-self: center;
+    border-radius: 10px;
+    margin: 0%;
+    padding: 0%;
+    align-content:space-between;
+    margin-right: 30px;
 }
+
+#cuadrado{
+    border-radius: 20px;
+    margin: 0%;
+    padding: 0%;
+    
+}
+
 .verdecito{
     margin: 1 auto;
     padding:0;
-    color:rgb(10, 31, 10);
-    font-weight: bold;
+    color:rgb(15, 226, 15);
+    background-color: rgb(193, 236, 150);
 }
 
 .rojito{
     margin: 1 auto;
     padding:0;
     color:rgb(185, 38, 28);
-    font-weight: bold;
+    background-color: rgb(240, 161, 161);
 }
 
 #añade{
@@ -42,16 +54,20 @@ body{
 #completar{
     background-color: green;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 #borrar{
     background-color: red;
     font-weight: bold;
+    border-radius: 10px;
 
 }
+
 #contador{
-    background-color: rgb(68, 158, 154);
+    background-color: rgb(92, 138, 135);
     align-items: center;
-    position: sticky;
-}
+    margin-right: 15px;
+    margin-left: 15px;
 
+}

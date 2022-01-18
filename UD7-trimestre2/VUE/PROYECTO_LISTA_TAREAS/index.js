@@ -2,22 +2,29 @@ const Counter = {
     data() {
       return {
         tareas:[],
-        titulo:"",
-        completada:false
+        titulo:""
     }
     }
     ,
     methods:{
         añade(){
-            this.tareas.push({titulo:this.titulo, completada: this.completada});
+          this.tareas.push({titulo:this.titulo, completada: false, fecha: new Date(), prioridad: 0});
+          this.anadirLocalStorage();
         },
 
         completar(i){
-            this.tareas[i].completada = true;
-        },
+            this.tareas[i].completada = !this.tareas[i].completada;//ponerlo para que cambia de true a false con el boton
+            this.anadirLocalStorage();
+          },
 
         borrar(i){
           this.tareas.splice(i,1);
+          this.anadirLocalStorage();
+        },
+
+        anadirLocalStorage(){
+          localStorage.setItem('notas', JSON.stringify(this.tareas));
+
         }
         
     },
@@ -30,6 +37,14 @@ const Counter = {
           }
         }
         return terminadas;
+      }
+
+      
+    },
+
+    mounted(){
+      if(localStorage.getItem('notas')){
+        this.tareas = JSON.parse(localStorage.getItem('notas'));
       }
     }
   }
