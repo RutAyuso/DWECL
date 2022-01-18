@@ -14,24 +14,46 @@
     <div id="appVue">
         TU LISTA DE TAREAS
         <input type="text" v-model="titulo">
-        <button id="añade" v-on:click="añade">Añade tarea</button>
+        <button id="añade" v-on:click="añade">ADD</button><!--AÑADIR KEYPRESS A BOTONES-->
         <br>
         <br>
         <div id="contador">Total tareas: {{tareas.length}}  
              Tareas acabadas: {{cuenta}}</div>
 
-        <ol>
+        
             <div id="cuadradito" v-for="t,i in tareas" >
-            <div id="cuadrado" v-bind:class="{verdecito: t.completada, rojito: !t.completada }">
-                <p>Descripción: {{t.titulo}}</p>
-                <p>Completa : {{t.completada}}. Fecha: {{t.fecha}}. Prioridad: {{t.prioridad}}</p>
-                <p v-if="completada">HECHO</p>
+            <div id="cuadrado" >
+                <hr>
+                <section v-bind:class="{verdecito: t.completada, rojito: !t.completada }">
+                    <p>Descripción: {{t.titulo}}</p>
+                    <!-- <p>Completa : {{t.completada}}</p> -->
+                    <p> Fecha: {{t.fecha}}.</p>
+                    <p>Prioridad: {{t.prioridad}}</p>
+                </section>
+                
+                <!-- RADIO BOTONES PRIORIDAD -->
+                <label for="0">Baja</label>
+                <input name="prioridad" value="0" v-model="t.prioridad" type="radio">
+                <label for="1">Media</label>
+                <input name="prioridad" value="1" v-model="t.prioridad" type="radio">
+                <label for="2">Alta</label>
+                <input name="prioridad" value="2" v-model="t.prioridad" type="radio">
+
+
+                <!-- <p v-if="completada">HECHO</p> -->
+
+                <!-- BTN DE COMPLETAR Y BORRAR -->
                 <button id="completar" v-on:click="completar(i)">DONE</button>
                 <button id="borrar" v-on:click="borrar(i)">DELETE</button>
-                </div>
-                <hr>
+                
+                
             </div>
-        </ol>
+            
+            
+            </div>
+            <hr>
+            <button id="borrar_completadas">DELETE ALL COMPLETED</button>
+        
 
       </div>
 </center> 

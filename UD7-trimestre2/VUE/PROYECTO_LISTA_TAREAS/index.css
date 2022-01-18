@@ -1,73 +1,79 @@
+/****ESTILOS BODY****/
 body{
-    background-color: rgb(125, 187, 125);
+    background-color: rgb(75, 143, 155);
     margin-top: 5%;
+    zoom: 150%;
 }
+
+/****ESTILOS CONTENEDOR VUE PRINCIPAL****/
 
 #appVue{
     color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(222, 235, 231);
     max-width: 300px;
-    padding: 0px;
-    margin: 0px;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     
 }
-
+/****ESTILOS CONTENEDOR DE TODAS TAREAS Y BOTONES****/
 #cuadradito{
     position: inherit;
     align-self: center;
     border-radius: 10px;
     margin: 0%;
-    padding: 0%;
+    padding-top: 10px;
     align-content:space-between;
-    margin-right: 30px;
+    /* margin-right: 30px; */
 }
 
+/****ESTILOS CONTENEDOR TAREA****/
 #cuadrado{
     border-radius: 20px;
-    margin: 0%;
-    padding: 0%;
     
 }
-
+/****ESTILOS CUANDO TAREA COMPLETA****/
 .verdecito{
     margin: 1 auto;
     padding:0;
-    color:rgb(15, 226, 15);
+    color:rgb(6, 63, 6);
     background-color: rgb(193, 236, 150);
+    text-decoration:line-through;
+    
 }
-
+/****ESTILOS CUANDO TAREA NO COMPLETA****/
 .rojito{
     margin: 1 auto;
     padding:0;
     color:rgb(185, 38, 28);
     background-color: rgb(240, 161, 161);
 }
-
+/****ESTILOS BTN 'AÑADIR' TAREA****/
 #añade{
-    background-color: yellow;
-    color: black;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: bolder;
-    font-size: large;
+    font-weight: bold;
+    border-color: black;
 }
-
+/****ESTILOS BTN 'DONE' ****/
 #completar{
-    background-color: green;
+    background-color: rgb(166, 230, 166);
     font-weight: bold;
     border-radius: 10px;
 }
-
+/****ESTILOS BTN 'BORRAR' ****/
 #borrar{
-    background-color: red;
+    background-color: rgb(235, 179, 179);
     font-weight: bold;
     border-radius: 10px;
 
 }
-
+/****ESTILOS CONTADOR SUPERIOR****/
 #contador{
-    background-color: rgb(92, 138, 135);
+    background-color: rgb(255, 255, 255);
     align-items: center;
     margin-right: 15px;
     margin-left: 15px;
-
+    border-radius: 20px;
 }

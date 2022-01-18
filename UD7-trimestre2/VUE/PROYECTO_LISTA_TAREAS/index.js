@@ -8,12 +8,12 @@ const Counter = {
     ,
     methods:{
         añade(){
-          this.tareas.push({titulo:this.titulo, completada: false, fecha: new Date(), prioridad: 0});
+          this.tareas.push({titulo:this.titulo, completada: false, fecha: new Date().toLocaleString(), prioridad: 0});
           this.anadirLocalStorage();
         },
 
         completar(i){
-            this.tareas[i].completada = !this.tareas[i].completada;//ponerlo para que cambia de true a false con el boton
+            this.tareas[i].completada = !this.tareas[i].completada;
             this.anadirLocalStorage();
           },
 
