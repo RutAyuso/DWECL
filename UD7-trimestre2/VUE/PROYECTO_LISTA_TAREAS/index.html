@@ -8,54 +8,70 @@
     <script src="index.js"></script>
     <link rel="stylesheet" href="index.css">
     <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
 <center>
     <div id="appVue">
-        TU LISTA DE TAREAS
+        Buscar:
+        <input type="text" v-model="buscar"><hr>
+        TU LISTA DE TAREAS<br>
         <input type="text" v-model="titulo">
-        <button id="añade" v-on:click="añade">ADD</button><!--AÑADIR KEYPRESS A BOTONES-->
+        <button id="añade" v-on:click="añade" v-on:keyup.13="añade">ADD</button><!--AÑADIR KEYPRESS A BOTONES-->
         <br>
         <br>
         <div id="contador">Total tareas: {{tareas.length}}  
-             Tareas acabadas: {{cuenta}}</div>
+                           Tareas acabadas: {{cuenta}}</div>
 
-        
-            <div id="cuadradito" v-for="t,i in tareas" >
-            <div id="cuadrado" >
-                <hr>
-                <section v-bind:class="{verdecito: t.completada, rojito: !t.completada }">
-                    <p>Descripción: {{t.titulo}}</p>
-                    <!-- <p>Completa : {{t.completada}}</p> -->
-                    <p> Fecha: {{t.fecha}}.</p>
-                    <p>Prioridad: {{t.prioridad}}</p>
-                </section>
+            <transition-group name="fade">
+            <div id="cuadradito uno" v-for="t,i in miListaFiltrada" >
+
                 
-                <!-- RADIO BOTONES PRIORIDAD -->
-                <label for="0">Baja</label>
-                <input name="prioridad" value="0" v-model="t.prioridad" type="radio">
-                <label for="1">Media</label>
-                <input name="prioridad" value="1" v-model="t.prioridad" type="radio">
-                <label for="2">Alta</label>
-                <input name="prioridad" value="2" v-model="t.prioridad" type="radio">
-
-
-                <!-- <p v-if="completada">HECHO</p> -->
-
-                <!-- BTN DE COMPLETAR Y BORRAR -->
-                <button id="completar" v-on:click="completar(i)">DONE</button>
-                <button id="borrar" v-on:click="borrar(i)">DELETE</button>
-                
-                
+                    <div id="cuadrado">
+                        <hr>
+                        <section v-bind:class="{verdecito: t.completada, rojito: !t.completada }">
+                            <p>Descripción: {{t.titulo}}</p>
+                            <!-- <p>Completa : {{t.completada}}</p> -->
+                            <p> Fecha: {{t.fecha}}.</p>
+                            <p>Prioridad: {{t.prioridad}}</p>
+                        </section>
+                      
+                        <!-- RADIO BOTONES PRIORIDAD -->
+                        <label for="0">Irrelevante</label>
+                        <input name="prioridad" value="0" v-model="t.prioridad" type="radio">
+                        <label for="1">importante</label>
+                        <input name="prioridad" value="1" v-model="t.prioridad" type="radio">
+                        <label for="2">muy importante</label>
+                        <input name="prioridad" value="2" v-model="t.prioridad" type="radio">
+                        <br>
+                        <br>
+    
+                        <!-- <p v-if="completada">HECHO</p> -->
+    
+                        <!-- BTN DE COMPLETAR Y BORRAR -->
+                        <button id="completar" v-on:click="completar(i)">&#10004;</button>
+                        <button id="borrar" v-on:click="borrar(i)">&#128465;</button>
+                        
+                        
+                    </div>                      
+            
             </div>
+           
+         </transition-group>
+        <hr>
+        <button id="borrar_completadas" v-on:click="borrarTareasCompletadas"> DELETE ALL COMPLETED </button><br>
+        <button id="mostrar_completadas" v-model="completas"  v-on:click="mostrarTareasCompletadas">COMPLETED</button>
+        <button id="mostrar_activas" v-model="incom" v-on:click="mostrarTareasActivas">ACTIVE</button>
+        <button id="mostrar_todas" v-model="todas" v-on:click="mostrarTodasTareas">ALL</button>
+
             
             
-            </div>
-            <hr>
-            <button id="borrar_completadas">DELETE ALL COMPLETED</button>
         
-
-      </div>
+        
+        </div>
+            
+        
 </center> 
     
 </body>
