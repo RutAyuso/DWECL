@@ -14,9 +14,10 @@
 <body>
 <center>
     <div id="appVue">
-        Buscar:
+        <h1 id="titulo">YOUR LIST</h1>
+        Buscar tarea:
         <input type="text" v-model="buscar"><hr>
-        TU LISTA DE TAREAS<br>
+        Nueva:
         <input type="text" v-model="titulo">
         <button id="añade" v-on:click="añade" v-on:keyup.13="añade">ADD</button><!--AÑADIR KEYPRESS A BOTONES-->
         <br>
@@ -38,22 +39,14 @@
                         </section>
                       
                         <!-- RADIO BOTONES PRIORIDAD -->
-                        <label for="0">Irrelevante</label>
-                        <input name="prioridad" value="0" v-model="t.prioridad" type="radio">
-                        <label for="1">importante</label>
-                        <input name="prioridad" value="1" v-model="t.prioridad" type="radio">
-                        <label for="2">muy importante</label>
-                        <input name="prioridad" value="2" v-model="t.prioridad" type="radio">
-                        <br>
-                        <br>
-    
-                        <!-- <p v-if="completada">HECHO</p> -->
+                        <label for="0">Irrelevante</label><input name="prioridad" value="0" v-model="t.prioridad" type="radio">
+                        <label for="1">importante</label><input name="prioridad" value="1" v-model="t.prioridad" type="radio">
+                        <label for="2">muy importante</label><input name="prioridad" value="2" v-model="t.prioridad" type="radio"><br><br>
     
                         <!-- BTN DE COMPLETAR Y BORRAR -->
-                        <button id="completar" v-on:click="completar(i)">&#10004;</button>
-                        <button id="borrar" v-on:click="borrar(i)">&#128465;</button>
-                        
-                        
+                        <button id="completar" v-on:click="completar(i)">✅</button>
+                        <button id="borrar" v-on:click="borrar(i)">&#10060;</button>
+                    
                     </div>                      
             
             </div>

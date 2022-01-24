@@ -35,40 +35,34 @@ const Counter = {
         anadirLocalStorage(){
           localStorage.setItem('notas', JSON.stringify(this.tareas));
         },
+
         
         mostrarTareasCompletadas(){
-          
          this.completas=!this.completas;
          this.incom= false;
          this.todas=false;
-
-        
-
         },
         mostrarTareasActivas(){
           this.incom= !this.incom;
           this.completas=false;
           this.todas=false;
-
-          
         },
         mostrarTodasTareas(){
           this.todas=!this.todas;
           this.incom= false;
           this.completas=false;
-          
-
         }
 
         
     },
     computed:{
+
       miListaFiltrada: function(){
         let listaFiltrada;
         if(this.buscar==""){
             listaFiltrada=this.tareas;
-        
-        }else{
+        }
+        else{
             listaFiltrada= this.tareas.filter((nota)=>{
                 if(nota.titulo.indexOf(this.buscar)>=0){
                     return true;
@@ -77,19 +71,20 @@ const Counter = {
                 }
             }); 
         
-            listaFiltrada=listaFiltrada.sort((nota1, nota2)=>{
-            if(nota1.prioridad>nota2.prioridad){
-                return -1;
-            }
-            if(nota1.prioridad<nota2.prioridad){
-                return 1;
-            }
-            return 0;
-        })
+            
       }
+      listaFiltrada=listaFiltrada.sort((nota1, nota2)=>{//SORT, ORDEN DE MAYOR A MENOR PRIORIDAD
+        if(nota1.prioridad>nota2.prioridad){
+            return -1;
+        }
+        if(nota1.prioridad<nota2.prioridad){
+            return 1;
+        }
+        return 0;
+    })
         if(this.todas==true){
           listaFiltrada= this.tareas.filter((nota)=>{
-            if(nota.completada==true || nota.completada==false){
+            if(nota.completada==true || nota.completada==false){//TODAS
                 return true;
             }else{
                 return false;
@@ -97,7 +92,7 @@ const Counter = {
         }); 
       }
         if(this.completas==true){
-          listaFiltrada= this.tareas.filter((nota)=>{
+          listaFiltrada= this.tareas.filter((nota)=>{//FILTRO COMPLETADAS
             if(nota.completada==true){
                 return true;
             }else{
@@ -106,7 +101,7 @@ const Counter = {
         });
       }
         if(this.incom==true){
-          listaFiltrada= this.tareas.filter((nota)=>{
+          listaFiltrada= this.tareas.filter((nota)=>{//FILTRO INCOMPLETAS
             if(nota.completada==false){
                 return true;
             }else{
@@ -119,14 +114,14 @@ const Counter = {
     },
       cuenta(){
         var terminadas = 0;
-        for(let i = 0; i<this.tareas.length; i++){
+        for(let i = 0; i<this.tareas.length; i++){//CONTADOR COMPLETADAS
           if(this.tareas[i].completada){
               terminadas++;
           }
         }
         return terminadas;
       },
-      anadirCompletadas(){
+      anadirCompletadas(){//AÑADO AL ARRAY DE COMPLETADAS TODAS LAS QUE TENGAN 'COMPLETADA:TRUE'
         console.log('aa')
         if(this.tareas.length >= 1){
           for(t of this.tareas){
@@ -140,7 +135,7 @@ const Counter = {
         return 0;
       },
       anadirIncompletas(){
-        if(this.tareas.length >= 1){
+        if(this.tareas.length >= 1){//AÑADO AL ARRAY DE INCOMPLETAS TODAS LAS QUE TENGAN 'COMPLETADA:FALSE'
           for(t of this.tareas){
             if(t.competada == false){
               this.incompletas.push(t);
@@ -154,12 +149,13 @@ const Counter = {
 
 
       },
-    mounted(){
+    mounted(){//ONLOAD
       if(localStorage.getItem('notas')){
         this.tareas = JSON.parse(localStorage.getItem('notas'));
+
         $('uno').show();
-        $('dos').hide();
-        $('tres').hide();
+        /*$('dos').hide();
+        $('tres').hide();*/
       }
     }
   }
@@ -168,7 +164,6 @@ const Counter = {
 }
 //falta:
 /*
-3-Las tareas se muestran siempre ordenadas por prioridad (alta a baja). this.tareas.sorted()
 4-Cada tarea muestra los minutos pasados desde que se dió de alta.
 5-El proyecto se realiza con la ayuda de VueCLI y usando componentes.
 */

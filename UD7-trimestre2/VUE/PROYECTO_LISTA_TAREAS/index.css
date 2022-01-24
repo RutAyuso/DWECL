@@ -1,12 +1,19 @@
 /****ESTILOS BODY****/
+html {
+    height: 100%;
+  }
 body{
-    background-color: rgb(75, 143, 155);
+    /*background-color: rgb(75, 143, 155);*/
     margin-top: 5%;
     zoom: 150%;
+    background: conic-gradient(#bebc79, #2d6459, rgb(124, 49, 61), rgb(220, 176, 176), rgb(163, 208, 163));
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+    /*background: rgb(176,174,238);
+    background: radial-gradient(circle, rgba(176,174,238,1) 15%, rgb(85, 18, 75) 90%);*/
 }
 
 /****ESTILOS CONTENEDOR VUE PRINCIPAL****/
-
 #appVue{
     color: rgb(0, 0, 0);
     background-color: rgb(222, 235, 231);
@@ -16,6 +23,12 @@ body{
     padding-bottom: 10px;
     
 }
+/****TITULO****/
+#titulo{
+    -webkit-text-stroke: 1px rgb(0, 0, 0);
+    color: white;
+}
+
 /****ESTILOS CONTENEDOR DE TODAS TAREAS Y BOTONES****/
 #cuadradito{
     position: inherit;
@@ -25,15 +38,15 @@ body{
     padding-top: 10px;
     align-content:space-between;
     overflow: auto;
-    
     /* margin-right: 30px; */
 }
 
 /****ESTILOS CONTENEDOR TAREA****/
+/*
 #cuadrado{
-    border-radius: 20px;
-    
-}
+    border-radius: 50px;
+}*/
+
 /****ESTILOS CUANDO TAREA COMPLETA****/
 .verdecito{
     margin: 1 auto;
@@ -41,8 +54,8 @@ body{
     color:rgb(6, 63, 6);
     background-color: rgb(193, 236, 150);
     text-decoration:line-through;
-    
 }
+
 /****ESTILOS CUANDO TAREA NO COMPLETA****/
 .rojito{
     margin: 1 auto;
@@ -50,6 +63,7 @@ body{
     color:rgb(185, 38, 28);
     background-color: rgb(240, 161, 161);
 }
+
 /****ESTILOS BTN 'AÑADIR' TAREA****/
 #añade{
     background-color: rgb(0, 0, 0);
@@ -58,49 +72,55 @@ body{
     font-weight: bold;
     border-color: black;
 }
+
 /****ESTILOS BTN 'DONE' ****/
 #completar{
     background-color: rgb(166, 230, 166);
     font-weight: bold;
     border-radius: 10px;
 }
+
 /****ESTILOS BTN 'BORRAR' ****/
 #borrar{
     background-color: rgb(235, 179, 179);
     font-weight: bold;
     border-radius: 10px;
-
 }
+
 /****ESTILOS BTN 'DELETE ALL DONE' ****/
 #borrar_completadas{
-    background-color: rgb(115, 20, 20);
-    color: blanchedalmond;
+    background-color: rgba(157, 146, 157, 0.974);
+    color: rgb(0, 0, 0);
     border-radius: 10px;
-
+    border-color: black;
+    border-width: 2px;
 }
 
 /****ESTILOS BTN 'COMPLETED' ****/
 #mostrar_completadas{
-    background-color: rgb(147, 115, 115);
-    color: blanchedalmond;
+    background-color: rgb(191, 240, 211);
+    color: rgb(0, 0, 0);
     border-radius: 10px;
-
+    border-color: black;
+    border-width: 2px;
 }
 
 /****ESTILOS BTN 'ACTIVE' ****/
 #mostrar_activas{
-    background-color: rgb(147, 115, 115);
-    color: blanchedalmond;
+    background-color: rgb(202, 199, 149);
+    color: rgb(0, 0, 0);
     border-radius: 10px;
-
+    border-color: black;
+    border-width: 2px;
 }
 
 /****ESTILOS BTN 'ALL' ****/
 #mostrar_todas{
-    background-color: rgb(147, 115, 115);
-    color: blanchedalmond;
+    background-color: rgb(155, 170, 194);
+    color: rgb(0, 0, 0);
     border-radius: 10px;
-
+    border-color: black;
+    border-width: 2px;
 }
 /****ESTILOS CONTADOR SUPERIOR****/
 #contador{
@@ -110,7 +130,7 @@ body{
     margin-left: 15px;
     border-radius: 20px;
 }
-/****TRANSICIONES****/
+/****TRANSICIONES DE BORRADO****/
 /*En esta transicion manda al ultimo lugar la tarea completada y la elimina poco a poco*/
 .fade-leave-active {
     transition: all 1s cubic-bezier(1, 0.5, 0.8, 1);
